@@ -15,7 +15,7 @@ public class MoveToLocation : MonoBehaviour
     {
         navigationAgent = GetComponent<NavMeshAgent>();
         navigationAgent.isStopped = true;
-        waypoints = new Vector3[0];
+        waypoints = new Vector3[0];       
     }
 
     // Update is called once per frame

@@ -10,7 +10,7 @@ public class HoodBehaviour : MonoBehaviour
     private MoveToLocation hoodMovement;
     private GameObject attackTarget;
     private IDamagable targetDamagable;
-    private bool shouldDealDamage = false;
+    private bool inCombat = false;
 
     private float lastAttacktime = 0;
 
@@ -21,7 +21,7 @@ public class HoodBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (shouldDealDamage && Time.time - lastAttacktime > attackSpeed)
+        if (inCombat && Time.time - lastAttacktime > attackSpeed)
         {
             HitAttackTarget();
             lastAttacktime = Time.time;
@@ -39,7 +39,7 @@ public class HoodBehaviour : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             targetDamagable = attackTarget.GetComponent<IDamagable>();
-            shouldDealDamage = true;
+            inCombat = true;
         }
     }
 
@@ -54,7 +54,7 @@ public class HoodBehaviour : MonoBehaviour
 
         if (condition)
         {
-            shouldDealDamage = false;
+            inCombat = false;
 
             GetNextTarget();
         }

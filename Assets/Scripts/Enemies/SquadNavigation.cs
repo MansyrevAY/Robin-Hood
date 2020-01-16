@@ -30,11 +30,11 @@ public class SquadNavigation : MonoBehaviour
 
     private void Start()
     {
-        StartSquadMoving();
+        //StartSquadMoving();
     }
 
 
-    private void StartSquadMoving()
+    public void StartSquadMoving()
     {
         cartMovement.ChangeDestination(waypointCoordinates);
 

@@ -4,12 +4,14 @@ public class SpawningHoods : MonoBehaviour
 {
     public GameObject hoodPrefab;
     public int maximumHoods;
+
     private int hoodsSpawned = 1;
+    private bool canSpawn = true;
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && hoodsSpawned <= maximumHoods)
+        if(Input.GetMouseButtonDown(0) && hoodsSpawned <= maximumHoods && canSpawn)
         {
             ShootRayAtMouse();
         }
@@ -49,5 +51,10 @@ public class SpawningHoods : MonoBehaviour
         spawnPosition.y += 0.8f;
 
         Instantiate(hoodPrefab, spawnPosition, Quaternion.identity, null);
+    }
+
+    public void TurnOffSpawning()
+    {
+        canSpawn = false;
     }
 }
