@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(MoveToLocation))]
 public class HoodBehaviour : MonoBehaviour
 {
     public int damage = 20;
     public float attackSpeed = 0.5f;
+    public DistributeAttackers targetDistributor;
 
     private MoveToLocation hoodMovement;
     private GameObject attackTarget;
@@ -35,21 +34,36 @@ public class HoodBehaviour : MonoBehaviour
         hoodMovement.ChangeDestination(guard.transform.position);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    // TODO: remake start of attacking into something more accurate
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
             targetDamagable = attackTarget.GetComponent<IDamagable>();
             shouldDealDamage = true;
-            //StartCoroutine(HitAttackTarget());
         }
     }
 
     private void HitAttackTarget()
     {
-        bool condition = targetDamagable.TakeDamage(damage);
+        bool condition = false;
+
+        if (attackTarget != null || !attackTarget.activeInHierarchy)
+            targetDamagable.TakeDamage(damage, out condition);
+        else
+            GetNextTarget();
 
         if (condition)
+        {
             shouldDealDamage = false;
+
+            GetNextTarget();
+        }
+    }
+
+    private void GetNextTarget()
+    {
+        if (targetDistributor.TargetsExist)
+            Attack(targetDistributor.GetTargetFor(gameObject));
     }
 }

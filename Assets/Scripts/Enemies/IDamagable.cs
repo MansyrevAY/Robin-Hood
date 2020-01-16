@@ -1,5 +1,4 @@
-﻿
-public interface IDamagable
+﻿public interface IDamagable
 {
-    bool TakeDamage(int amount);
+    void TakeDamage(int amount, out bool condition);
 }

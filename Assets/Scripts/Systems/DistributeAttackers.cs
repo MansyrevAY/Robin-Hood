@@ -7,7 +7,12 @@ public class DistributeAttackers : MonoBehaviour
     public GameObjRuntimeSetSO allGuards;
     public GameObjRuntimeSetSO allHoods;
 
-    public void CreatePairsToFight()
+    public bool TargetsExist
+    {
+        get { return allGuards.set.Count > 0 ? true : false; }
+    }
+
+    public void DistributeHoodTargets()
     {
         GameObject closestGuard = null;
         HoodBehaviour hoodBehaviour = null;
@@ -19,6 +24,18 @@ public class DistributeAttackers : MonoBehaviour
 
             hoodBehaviour.Attack(closestGuard);
         }
+    }
+
+    public GameObject GetTargetFor(GameObject hood)
+    {
+        GameObject pair = null;
+
+        if (allHoods.set.Contains(hood))            
+        {
+            pair = GetClosestTo(hood, allGuards.set);
+        }
+
+        return pair;
     }
 
     private GameObject GetClosestTo(GameObject obj, List<GameObject> inList)

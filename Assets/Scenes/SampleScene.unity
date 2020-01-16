@@ -2352,6 +2352,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1116277896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2436284347082940323, guid: 92342343077b9cc4aad0d0bb74144c10,
+    type: 3}
+  m_PrefabInstance: {fileID: 6094163171815240258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1160313939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4016466012764230, guid: 5f8124340f58c7842a99486ec1e5d44e,
@@ -3451,6 +3457,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1693432638}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1816390418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4558336074177298893, guid: 92342343077b9cc4aad0d0bb74144c10,
+    type: 3}
+  m_PrefabInstance: {fileID: 6094163171815240258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1825593853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5654114950472278229, guid: 92342343077b9cc4aad0d0bb74144c10,
+    type: 3}
+  m_PrefabInstance: {fileID: 6094163171815240258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1873754119 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4486652814298482, guid: 7937477eb299a604184e761deb7876a7,
@@ -3462,6 +3480,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4263502838454874, guid: ad2262a30b4e60441962d406e9ddef80,
     type: 3}
   m_PrefabInstance: {fileID: 1353397988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1908522137 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8066716846534479242, guid: 92342343077b9cc4aad0d0bb74144c10,
+    type: 3}
+  m_PrefabInstance: {fileID: 6094163171815240258}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1965469543
 PrefabInstance:
@@ -3903,6 +3927,56 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 452288334}
+    - target: {fileID: 6094163172202187507, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: guards.Array.data[0]
+      value: 
+      objectReference: {fileID: 1908522137}
+    - target: {fileID: 6094163172202187507, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: guards.Array.data[1]
+      value: 
+      objectReference: {fileID: 1816390418}
+    - target: {fileID: 6094163172202187507, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: guards.Array.data[2]
+      value: 
+      objectReference: {fileID: 1116277896}
+    - target: {fileID: 6094163172202187507, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: guards.Array.data[3]
+      value: 
+      objectReference: {fileID: 1825593853}
+    - target: {fileID: 6770412016428347346, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770412017172495667, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770412017953024929, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769131985758974267, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066716846534479242, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394366183541279000, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92342343077b9cc4aad0d0bb74144c10, type: 3}
 --- !u!1001 &6986764957883252339
@@ -4036,6 +4110,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8009548171681204270, guid: 671177a9f7984b240854aa2be2d8d055,
+        type: 3}
+      propertyPath: responce.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DistributeHoodTargets
+      objectReference: {fileID: 0}
     - target: {fileID: 8294417092308537828, guid: 671177a9f7984b240854aa2be2d8d055,
         type: 3}
       propertyPath: m_Name
@@ -4049,50 +4128,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8009548171681204266}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8009548171681204268 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8294417092308537828, guid: 671177a9f7984b240854aa2be2d8d055,
-    type: 3}
-  m_PrefabInstance: {fileID: 8009548171681204266}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8009548171681204269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8009548171681204268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dfff90c3b192574b86d8368a2eeb084, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allGuards: {fileID: 11400000, guid: a9b2d35d16d929e4f8e4a81acdd0e268, type: 2}
-  allHoods: {fileID: 11400000, guid: 9a052aa77e1fcb642a126c11ded10e38, type: 2}
---- !u!114 &8009548171681204270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8009548171681204268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b7ccaf5d913d2e4fa165f37177da46c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  responce:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8009548171681204269}
-        m_MethodName: CreatePairsToFight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  gameEvent: {fileID: 11400000, guid: b856e2c66e8b1b546bcbae4a377bd656, type: 2}

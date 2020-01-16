@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -34,7 +32,7 @@ public class MoveToLocation : MonoBehaviour
         if (waypoints.Length == 0 || currentWaypoint == waypoints.Length - 1)
             return;
 
-        if (gameObject.transform.position.x == navigationAgent.destination.x && gameObject.transform.position.z == navigationAgent.destination.z)
+        if (IsAtDestination())
         {
             if(singleWaypoint)
             {
@@ -46,6 +44,14 @@ public class MoveToLocation : MonoBehaviour
             currentWaypoint++;
             navigationAgent.SetDestination(waypoints[currentWaypoint]);
         }
+    }
+
+    private bool IsAtDestination()
+    {
+        if (gameObject.transform.position.x == navigationAgent.destination.x && gameObject.transform.position.z == navigationAgent.destination.z)
+            return true;
+        else
+            return false;
     }
 
     public void ChangeDestination(Vector3 destination)

@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6085604962702173517}
+  - component: {fileID: 8009548171681204269}
+  - component: {fileID: 8009548171681204270}
   m_Layer: 0
   m_Name: AttackDistributor
   m_TagString: Untagged
@@ -30,3 +32,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8009548171681204269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8294417092308537828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dfff90c3b192574b86d8368a2eeb084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allGuards: {fileID: 11400000, guid: a9b2d35d16d929e4f8e4a81acdd0e268, type: 2}
+  allHoods: {fileID: 11400000, guid: 9a052aa77e1fcb642a126c11ded10e38, type: 2}
+--- !u!114 &8009548171681204270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8294417092308537828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b7ccaf5d913d2e4fa165f37177da46c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  responce:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8009548171681204269}
+        m_MethodName: CreatePairsToFight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameEvent: {fileID: 11400000, guid: b856e2c66e8b1b546bcbae4a377bd656, type: 2}

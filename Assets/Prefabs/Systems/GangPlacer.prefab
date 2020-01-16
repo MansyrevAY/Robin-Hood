@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f0dcda97abe57409dc4d663add4521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoodPrefab: {fileID: 2177025375814243074, guid: 00407ca634640c944866549bb1d55dff,
+  hoodPrefab: {fileID: 575325757956480815, guid: 00407ca634640c944866549bb1d55dff,
     type: 3}
   maximumHoods: 4

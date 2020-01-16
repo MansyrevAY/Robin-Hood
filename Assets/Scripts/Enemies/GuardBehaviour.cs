@@ -1,30 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GuardBehaviour : MonoBehaviour, IDamagable
 {
     public int maxHealth = 100;
+    public int health;              // Only for representation in the Inspector
+
     private int currentHealth;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        health = maxHealth;
     }
 
-    public bool TakeDamage(int amount)
+    // I don't like this "out bool", but it's my best idea for now
+    public void TakeDamage(int amount, out bool condition)
     {
-        bool condition = false;
+        condition = false;
+
         currentHealth -= amount;
+        health = currentHealth;
 
         if (currentHealth <= 0)
         {
-            Invoke("StartDeath", 0.1f);
             condition = true;
+            gameObject.SetActive(false);
         }
 
-        return condition;
     }
 
     private void StartDeath()
