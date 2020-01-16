@@ -34,7 +34,6 @@ public class HoodBehaviour : MonoBehaviour
         hoodMovement.ChangeDestination(guard.transform.position);
     }
 
-    // TODO: remake start of attacking into something more accurate
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
