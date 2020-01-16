@@ -30,6 +30,9 @@ public class GuardBehaviour : MonoBehaviour, IDamagable
 
     }
 
+    /// <summary>
+    /// Зачем, если под это есть отдельный скрипт?
+    /// </summary>
     private void StartDeath()
     {
         Destroy(gameObject);

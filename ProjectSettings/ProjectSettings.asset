@@ -663,10 +663,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: e069335c-e257-4dda-b6eb-1cda5a9f6269
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: PolyDiablo
+  organizationId: glavsvarshik
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

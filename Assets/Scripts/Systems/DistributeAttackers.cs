@@ -15,14 +15,15 @@ public class DistributeAttackers : MonoBehaviour
     public void DistributeHoodTargets()
     {
         GameObject closestGuard = null;
-        HoodBehaviour hoodBehaviour = null;
+        //HoodBehaviour hoodBehaviour = null;
 
         foreach (GameObject hood in allHoods.set)
         {
             closestGuard = GetClosestTo(hood, allGuards.set);
-            hoodBehaviour = hood.GetComponent<HoodBehaviour>();
+            
+            //Т.к. не увидел, чтобы hoodBehaviour использовался где-то еще, убрал его.
+            hood.GetComponent<HoodBehaviour>().Attack(closestGuard);
 
-            hoodBehaviour.Attack(closestGuard);
         }
     }
 
