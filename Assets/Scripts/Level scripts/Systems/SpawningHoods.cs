@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SpawningHoods : MonoBehaviour
 {
@@ -19,6 +21,9 @@ public class SpawningHoods : MonoBehaviour
 
     private void ShootRayAtMouse()
     {
+        if (UIClicked())
+            return;
+
         Vector3 spawnPosition = GetSpawnPosition();
         
         if(spawnPosition != Vector3.negativeInfinity)
@@ -26,6 +31,26 @@ public class SpawningHoods : MonoBehaviour
             SpawnHoodAt(spawnPosition);
             hoodsSpawned++;
         }
+    }
+
+    /// <summary>
+    /// Проверка на попадание в интерфейс
+    /// </summary>
+    /// <returns>true, если попали в интерфейс</returns>
+    private bool UIClicked()
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+        pointerEventData.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, results);
+
+        foreach (RaycastResult res in results)
+        {
+            if (res.gameObject.layer == 5)
+                return true;
+        }
+
+        return false;
     }
 
     private Vector3 GetSpawnPosition()
