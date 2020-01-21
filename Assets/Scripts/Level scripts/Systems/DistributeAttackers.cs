@@ -15,20 +15,12 @@ public class DistributeAttackers : MonoBehaviour
     public void DistributeHoodTargets()
     {
         GameObject closestGuard = null;
-        HoodBehaviour hoodBehaviour = null;
 
         foreach (GameObject hood in allHoods.set)
         {
             closestGuard = GetClosestTo(hood, allGuards.set);
 
-            // А вот так - нет, и я хз почему
-            //hoodBehaviour = hood.GetComponent<HoodBehaviour>();
-            //hoodBehaviour.Attack(closestGuard);
-
-
-            //Т.к. не увидел, чтобы hoodBehaviour использовался где-то еще, убрал его.
-            hood.GetComponent<HoodBehaviour>().Attack(closestGuard); // Так гвардов раскукоживает
-
+            hood.GetComponent<IAttacking>().Attack(closestGuard);
         }
     }
 

@@ -1,36 +1,32 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(MoveToLocation))]
-public class HoodBehaviour : MonoBehaviour
+public class HoodBehaviour : UnitBehaviourBase, IAttacking
 {
-    public int damage = 20;
-    public float attackSpeed = 0.5f;
+    
     public DistributeAttackers targetDistributor;
 
     private MoveToLocation hoodMovement;
-    private GameObject attackTarget;
-    private IDamagable targetDamagable;
-    private bool inCombat = false;
-
     private float lastAttacktime = 0;
 
-    void Awake()
+    private void Awake()
     {
         hoodMovement = GetComponent<MoveToLocation>();
+        SetBaseStats();
     }
 
     private void Update()
     {
         if (inCombat && Time.time - lastAttacktime > attackSpeed)
         {
-            HitAttackTarget();
+            DealDamageToTarget();
             lastAttacktime = Time.time;
         }
     }
 
     public void Attack(GameObject guard)
     {
-        attackTarget = guard;
+        currentTarget = guard;
         hoodMovement.ChangeDestination(guard.transform.position);
     }
 
@@ -38,29 +34,12 @@ public class HoodBehaviour : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            targetDamagable = attackTarget.GetComponent<IDamagable>();
+            targetDamagable = currentTarget.GetComponent<IDamagable>();
             inCombat = true;
         }
     }
 
-    private void HitAttackTarget()
-    {
-        bool condition = false;
-
-        if (attackTarget != null || !attackTarget.activeInHierarchy)
-            targetDamagable.TakeDamage(damage, out condition);
-        else
-            GetNextTarget();
-
-        if (condition)
-        {
-            inCombat = false;
-
-            GetNextTarget();
-        }
-    }
-
-    private void GetNextTarget()
+    protected override void GetNextTarget()
     {
         if (targetDistributor.TargetsExist)
             Attack(targetDistributor.GetTargetFor(gameObject));

@@ -430,8 +430,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -0.000045776367, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &70603280
 MonoBehaviour:
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 102.2825, y: 27.124756, z: 100.041626, w: 25.396973}
+  m_margin: {x: 0.7635803, y: -0.06774902, z: 0.6982422, w: 0.74243164}
   m_textInfo:
     textComponent: {fileID: 70603280}
     characterCount: 6
@@ -2409,11 +2409,11 @@ RectTransform:
   m_Father: {fileID: 1248004918}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 62.9}
-  m_Pivot: {x: 0.5, y: 1}
+  m_SizeDelta: {x: 486.43, y: 62.9}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &992066991
 MonoBehaviour:
   m_ObjectHideFlags: 0
