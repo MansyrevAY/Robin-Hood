@@ -4409,6 +4409,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8066716846534479247, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: originalAttack
+      value: 
+      objectReference: {fileID: 11400000, guid: 43a1fcecd8b625e43af375c671758d67,
+        type: 2}
     - target: {fileID: 8394366183541279000, guid: 92342343077b9cc4aad0d0bb74144c10,
         type: 3}
       propertyPath: m_IsKinematic
