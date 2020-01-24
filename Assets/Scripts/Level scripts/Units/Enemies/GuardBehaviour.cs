@@ -2,31 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GuardBehaviour : UnitBehaviourBase, IAttacking
+public class GuardBehaviour : AttackBehaviour
 {
     private Queue<GameObject> attackers = new Queue<GameObject>();
 
     void Awake() => SetBaseStats();
 
-    void Start()
-    {
-        currentHealth = maxHealth;
-        health = maxHealth;
-    }
-
     private void Update()
     {
-        
+        MakeAttack();
     }
 
     private void OnTriggerEnter(Collider other) => Attack(other.gameObject);
 
-    public void Attack(GameObject hood)
+    public override void Attack(GameObject hood)
     {
+        if (hood.tag != "Hood")
+            return;
+
         attackers.Enqueue(hood);
 
         if (currentTarget == null)
+        {
             currentTarget = attackers.Dequeue();
+            targetDamagable = currentTarget.GetComponent<HealthBehaviour>();
+        }
 
         inCombat = true;
     }
@@ -35,5 +35,11 @@ public class GuardBehaviour : UnitBehaviourBase, IAttacking
     {
         if (attackers.Count > 0)
             currentTarget = attackers.Dequeue();
+    }
+
+    protected override void SetBaseStats()
+    {
+        damage = originalAttack.damage;
+        attackSpeed = originalAttack.attackSpeed;
     }
 }

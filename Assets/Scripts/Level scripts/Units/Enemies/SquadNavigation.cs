@@ -7,14 +7,14 @@ public class SquadNavigation : MonoBehaviour
     public GameObject cart;
 
     private Vector3[] waypointCoordinates;
-    private MoveToLocation cartMovement;
-    private MoveToLocation[] guardMovements; // death of guards needs to be handled
+    private MovementBehaviour cartMovement;
+    private MovementBehaviour[] guardMovements; // death of guards needs to be handled
 
     void Awake()
     {
-        cartMovement = cart.GetComponent<MoveToLocation>();
+        cartMovement = cart.GetComponent<MovementBehaviour>();
         waypointCoordinates = new Vector3[waypoints.Length];
-        guardMovements = new MoveToLocation[guards.Length];
+        guardMovements = new MovementBehaviour[guards.Length];
 
         for (int i = 0; i < waypoints.Length; i++)
         {
@@ -40,7 +40,7 @@ public class SquadNavigation : MonoBehaviour
 
         foreach (GameObject guard in guards)
         {
-            MoveToLocation guardMovement = guard.GetComponent<MoveToLocation>();
+            MovementBehaviour guardMovement = guard.GetComponent<MovementBehaviour>();
 
             guardMovement.ChangeDestination(AdjustPathForGuard(guard));
         }
@@ -73,7 +73,7 @@ public class SquadNavigation : MonoBehaviour
         
         foreach (GameObject guard in guards)
         {
-            MoveToLocation guardMovement = guard.GetComponent<MoveToLocation>();
+            MovementBehaviour guardMovement = guard.GetComponent<MovementBehaviour>();
 
             guardMovement.StopMovement();
         }

@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d965700a134ec44a290544de5ce443, type: 3}
-  m_Name: PrototypeUnit
+  m_Script: {fileID: 11500000, guid: 8def82e34ccbad647b8f6fd9e9174386, type: 3}
+  m_Name: Attack Stat
   m_EditorClassIdentifier: 
-  maxHP: 100
-  attackSpeed: 0.5
   damage: 20
+  attackSpeed: 0.5

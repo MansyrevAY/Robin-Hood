@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6540801183205136221}
   - component: {fileID: 8531444188722886585}
   - component: {fileID: 6722096947504006825}
+  - component: {fileID: -1770081093260017562}
   - component: {fileID: -2156029213629317036}
   m_Layer: 0
   m_Name: Hood
@@ -100,8 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3350bcfbf0cd9f40b2e9591f7db2ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characteristics: {fileID: 11400000, guid: 108a73b41562d2d4d95c7eba51e2b80f, type: 2}
-  health: 0
+  originalAttack: {fileID: 11400000, guid: 4fb9561ff6bea7e4b998e34adcd019e6, type: 2}
   targetDistributor: {fileID: 8009548171681204269, guid: 671177a9f7984b240854aa2be2d8d055,
     type: 3}
 --- !u!114 &6722096947504006825
@@ -116,6 +116,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9051b14f50c077d43b50b7f30e184d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1770081093260017562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575325757956480815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bec7d70ccb26604e8e8ce58badd0179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalHealth: {fileID: 11400000, guid: abd257a28b3c9b84b942dbbd85e3893d, type: 2}
+  health: 0
 --- !u!114 &-2156029213629317036
 MonoBehaviour:
   m_ObjectHideFlags: 0

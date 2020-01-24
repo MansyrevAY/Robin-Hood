@@ -53,6 +53,10 @@ public class SpawningHoods : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Cast ray to the floor, returns -infinity if there is anything exept Terrain
+    /// </summary>
+    /// <returns></returns>
     private Vector3 GetSpawnPosition()
     {
         Ray ray;

@@ -2,7 +2,7 @@
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class MoveToLocation : MonoBehaviour
+public class MovementBehaviour : MonoBehaviour
 {
     protected Vector3[] waypoints;
     protected int currentWaypoint = 0;

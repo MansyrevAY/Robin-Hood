@@ -20,7 +20,7 @@ public class DistributeAttackers : MonoBehaviour
         {
             closestGuard = GetClosestTo(hood, allGuards.set);
 
-            hood.GetComponent<IAttacking>().Attack(closestGuard);
+            hood.GetComponent<AttackBehaviour>().Attack(closestGuard);
         }
     }
 
