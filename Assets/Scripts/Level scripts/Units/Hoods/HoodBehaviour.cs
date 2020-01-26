@@ -7,6 +7,7 @@ public class HoodBehaviour : AttackBehaviour
 
     private MovementBehaviour hoodMovement;
 
+
     private void Awake()
     {
         hoodMovement = GetComponent<MovementBehaviour>();
@@ -35,9 +36,11 @@ public class HoodBehaviour : AttackBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            inCombat = true;
+            InCombat = true;
         }
     }
+
+ 
 
     protected override void GetNextTarget()
     {

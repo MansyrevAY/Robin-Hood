@@ -6,7 +6,8 @@ public abstract class AttackBehaviour : MonoBehaviour
 {
     public AttackSO originalAttack;
 
-    protected bool inCombat = false;
+    public bool InCombat { get; protected set; }
+
     protected HealthBehaviour targetDamagable;
     protected GameObject currentTarget;
     protected int damage = 20;
@@ -24,7 +25,7 @@ public abstract class AttackBehaviour : MonoBehaviour
     /// </summary>
     protected virtual void MakeAttack()
     {
-        if (inCombat && Time.time - lastAttacktime > attackSpeed)
+        if (InCombat && Time.time - lastAttacktime > attackSpeed)
         {
             if (currentTarget == null || targetDamagable == null)
                 GetNextTarget();
@@ -54,7 +55,7 @@ public abstract class AttackBehaviour : MonoBehaviour
 
         if (condition)
         {
-            inCombat = false;
+            InCombat = false;
 
             GetNextTarget();
         }

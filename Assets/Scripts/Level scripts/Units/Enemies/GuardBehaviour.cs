@@ -28,7 +28,7 @@ public class GuardBehaviour : AttackBehaviour
             targetDamagable = currentTarget.GetComponent<HealthBehaviour>();
         }
 
-        inCombat = true;
+        InCombat = true;
     }
 
     protected override void GetNextTarget()
