@@ -7,7 +7,6 @@ public class HoodBehaviour : AttackBehaviour
 
     private MovementBehaviour hoodMovement;
 
-
     private void Awake()
     {
         hoodMovement = GetComponent<MovementBehaviour>();
@@ -39,8 +38,6 @@ public class HoodBehaviour : AttackBehaviour
             InCombat = true;
         }
     }
-
- 
 
     protected override void GetNextTarget()
     {

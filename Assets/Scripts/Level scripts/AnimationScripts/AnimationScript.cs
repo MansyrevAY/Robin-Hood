@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//#define DEBUG_MODE
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,7 +14,7 @@ public class AnimationScript : MonoBehaviour
     protected Animator animator;
     protected AttackBehaviour attack;
 
-    void Start()
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
@@ -22,7 +24,11 @@ public class AnimationScript : MonoBehaviour
     void Update()
     {
         float speedPercent = agent.velocity.magnitude / agent.speed;
-        Debug.Log(speedPercent);
+
+        #if DEBUG_MODE
+        Debug.Log("Speed percent = " + speedPercent);
+        #endif
+
         animator.SetFloat("speedPercent", speedPercent, locomotionAnimationSmoothTime, Time.deltaTime);
 
         animator.SetBool("inCombat", attack.InCombat);
