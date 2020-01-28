@@ -5,11 +5,11 @@ public class HoodBehaviour : AttackBehaviour
 {
     public DistributeAttackers targetDistributor;
 
-    private MovementBehaviour hoodMovement;
+    private MovementBehaviour movement;
 
     private void Awake()
     {
-        hoodMovement = GetComponent<MovementBehaviour>();
+        movement = GetComponent<MovementBehaviour>();
         SetBaseStats();
     }
 
@@ -27,7 +27,7 @@ public class HoodBehaviour : AttackBehaviour
     public override void Attack(GameObject guard)
     {
         currentTarget = guard;
-        hoodMovement.ChangeDestination(guard.transform.position);
+        movement.ChangeDestination(guard.transform.position);
         targetDamagable = currentTarget.GetComponent<HealthBehaviour>();
     }
 
@@ -36,6 +36,8 @@ public class HoodBehaviour : AttackBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             InCombat = true;
+            movement.StopMovement();
+            transform.LookAt(other.transform);
         }
     }
 

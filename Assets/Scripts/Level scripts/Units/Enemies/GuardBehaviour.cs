@@ -25,6 +25,7 @@ public class GuardBehaviour : AttackBehaviour
         if (currentTarget == null)
         {
             currentTarget = attackers.Dequeue();
+            transform.LookAt(currentTarget.transform); // надо переделать в более плавный поворот
             targetDamagable = currentTarget.GetComponent<HealthBehaviour>();
         }
 

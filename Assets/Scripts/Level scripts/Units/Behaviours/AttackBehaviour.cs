@@ -14,6 +14,8 @@ public abstract class AttackBehaviour : MonoBehaviour
     protected float attackSpeed = 0.5f;
     protected float lastAttacktime = 0;
 
+    protected enum TargetCondition { TargetAlive, TargetKilled};
+
     /// <summary>
     /// Starts to perform attacking actions for the target
     /// </summary>
@@ -23,7 +25,7 @@ public abstract class AttackBehaviour : MonoBehaviour
     /// <summary>
     /// Calls DealDamage every attackSpeed time if inCombat is true
     /// </summary>
-    protected virtual void MakeAttack()
+    public virtual void MakeAttack()
     {
         if (InCombat && Time.time - lastAttacktime > attackSpeed)
         {
@@ -31,34 +33,37 @@ public abstract class AttackBehaviour : MonoBehaviour
                 GetNextTarget();
             else
             {
-                DealDamageToTarget();
+                
                 lastAttacktime = Time.time;
+
+                if (DealDamageToTarget() == TargetCondition.TargetKilled)
+                {
+                    GetNextTarget();
+                    InCombat = false;
+                }
             }
         }
     }
 
     /// <summary>
-    /// Deals damage if can, if not, calls GetNextTarget
+    /// Deals damage if can, returns target condition
     /// </summary>
-    protected virtual void DealDamageToTarget()
+    protected virtual TargetCondition DealDamageToTarget()
     {
-        bool condition = false;
+        bool isDead = false;
 
-        if (currentTarget != null)
+        if (currentTarget == null)
+            return TargetCondition.TargetKilled;
+
+        if (currentTarget.activeInHierarchy)
         {
-            if (currentTarget.activeInHierarchy)
-                targetDamagable.TakeDamage(damage, out condition);
-        }
+            targetDamagable.TakeDamage(damage, out isDead);
+        }            
 
-        else
-            GetNextTarget();
+        if (isDead)
+            return TargetCondition.TargetKilled;
 
-        if (condition)
-        {
-            InCombat = false;
-
-            GetNextTarget();
-        }
+        return TargetCondition.TargetAlive;        
     }
 
     /// <summary>

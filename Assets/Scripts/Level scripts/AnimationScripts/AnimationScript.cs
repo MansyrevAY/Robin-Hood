@@ -7,7 +7,6 @@ using UnityEngine.AI;
 
 public class AnimationScript : MonoBehaviour
 {
-
     const float locomotionAnimationSmoothTime = .1f;
 
     NavMeshAgent agent;
@@ -26,11 +25,13 @@ public class AnimationScript : MonoBehaviour
         float speedPercent = agent.velocity.magnitude / agent.speed;
 
         #if DEBUG_MODE
-        Debug.Log("Speed percent = " + speedPercent);
+        Debug.Log("Speed = " + speedPercent + "%");
         #endif
 
         animator.SetFloat("speedPercent", speedPercent, locomotionAnimationSmoothTime, Time.deltaTime);
 
-        animator.SetBool("inCombat", attack.InCombat);
+        if(animator.GetBool("inCombat") != attack.InCombat)
+            animator.SetBool("inCombat", attack.InCombat);
+        
     }
 }
