@@ -19,6 +19,7 @@ public class GuardBehaviour : AttackBehaviour
     {
         if (hood.tag != "Hood")
             return;
+        InCombat = true;
 
         attackers.Enqueue(hood);
 
@@ -27,9 +28,7 @@ public class GuardBehaviour : AttackBehaviour
             currentTarget = attackers.Dequeue();
             transform.LookAt(currentTarget.transform); // надо переделать в более плавный поворот
             targetDamagable = currentTarget.GetComponent<HealthBehaviour>();
-        }
-
-        InCombat = true;
+        }        
     }
 
     protected override void GetNextTarget()
@@ -41,6 +40,7 @@ public class GuardBehaviour : AttackBehaviour
     protected override void SetBaseStats()
     {
         damage = originalAttack.damage;
-        attackSpeed = originalAttack.attackSpeed;
+        attackDuration = originalAttack.attackSpeed;
+        animationBehaviour = GetComponent<AnimationScript>();
     }
 }

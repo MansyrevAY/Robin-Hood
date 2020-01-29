@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AnimationScript))]
 public abstract class AttackBehaviour : MonoBehaviour
 {
     public AttackSO originalAttack;
@@ -11,8 +12,9 @@ public abstract class AttackBehaviour : MonoBehaviour
     protected HealthBehaviour targetDamagable;
     protected GameObject currentTarget;
     protected int damage = 20;
-    protected float attackSpeed = 0.5f;
+    protected float attackDuration = 0.5f;
     protected float lastAttacktime = 0;
+    protected AnimationScript animationBehaviour;
 
     protected enum TargetCondition { TargetAlive, TargetKilled};
 
@@ -25,23 +27,48 @@ public abstract class AttackBehaviour : MonoBehaviour
     /// <summary>
     /// Calls DealDamage every attackSpeed time if inCombat is true
     /// </summary>
+    //public virtual void MakeAttack()
+    //{
+    //    if (InCombat && Time.time - lastAttacktime > attackDuration)
+    //    {
+    //        if (currentTarget == null || targetDamagable == null)
+    //            GetNextTarget();
+    //        else
+    //        {
+    //            lastAttacktime = Time.time;
+
+    //            if (DealDamageToTarget() == TargetCondition.TargetKilled)
+    //            {
+    //                GetNextTarget();
+    //                InCombat = false;
+    //            }
+    //        }
+    //    }
+    //}
+
     public virtual void MakeAttack()
     {
-        if (InCombat && Time.time - lastAttacktime > attackSpeed)
+        if (InCombat && Time.time - lastAttacktime > attackDuration)
         {
             if (currentTarget == null || targetDamagable == null)
                 GetNextTarget();
             else
             {
-                
                 lastAttacktime = Time.time;
+                attackDuration = animationBehaviour.GetNextAttackDuration();
+                animationBehaviour.PlayNextAttackAnimation();
 
-                if (DealDamageToTarget() == TargetCondition.TargetKilled)
-                {
-                    GetNextTarget();
-                    InCombat = false;
-                }
+                Invoke("Swing", attackDuration);                
             }
+        }
+    }
+
+    protected void Swing()
+    {
+        if (DealDamageToTarget() == TargetCondition.TargetKilled)
+        {
+            GetNextTarget();
+            InCombat = false;
         }
     }
 
