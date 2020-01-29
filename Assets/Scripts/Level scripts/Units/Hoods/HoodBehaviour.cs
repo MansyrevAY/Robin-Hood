@@ -5,18 +5,19 @@ public class HoodBehaviour : AttackBehaviour
 {
     public DistributeAttackers targetDistributor;
 
-    private MovementBehaviour hoodMovement;
+    private MovementBehaviour movement;
 
     private void Awake()
     {
-        hoodMovement = GetComponent<MovementBehaviour>();
+        movement = GetComponent<MovementBehaviour>();
         SetBaseStats();
     }
 
     protected override void SetBaseStats()
     {
         damage = originalAttack.damage;
-        attackSpeed = originalAttack.attackSpeed;
+        attackDuration = originalAttack.attackSpeed;
+        animationBehaviour = GetComponent<AnimationScript>();
     }
 
     private void Update()
@@ -27,7 +28,7 @@ public class HoodBehaviour : AttackBehaviour
     public override void Attack(GameObject guard)
     {
         currentTarget = guard;
-        hoodMovement.ChangeDestination(guard.transform.position);
+        movement.ChangeDestination(guard.transform.position);
         targetDamagable = currentTarget.GetComponent<HealthBehaviour>();
     }
 
@@ -35,7 +36,9 @@ public class HoodBehaviour : AttackBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            inCombat = true;
+            InCombat = true;
+            movement.StopMovement();
+            transform.LookAt(other.transform);
         }
     }
 
