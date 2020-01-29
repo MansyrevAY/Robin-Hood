@@ -52,7 +52,6 @@ public abstract class AttackBehaviour : MonoBehaviour
         else
             GetNextTarget();
 
-        
         if (condition)
         {
             inCombat = false;
