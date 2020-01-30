@@ -22,7 +22,7 @@ public class HoodBehaviour : AttackBehaviour
 
     private void Update()
     {
-        MakeAttack();
+        //MakeAttack();
     }
 
     public override void Attack(GameObject guard)

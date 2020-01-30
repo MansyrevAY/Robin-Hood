@@ -6,10 +6,5 @@ using UnityEngine.Events;
 
 public class CallEventOnExit : StateMachineBehaviour
 {
-    public UnityEvent Event;
 
-    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        Event.Invoke();
-    }
 }

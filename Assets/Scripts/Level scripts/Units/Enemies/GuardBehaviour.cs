@@ -10,7 +10,7 @@ public class GuardBehaviour : AttackBehaviour
 
     private void Update()
     {
-        MakeAttack();
+        //MakeAttack();
     }
 
     private void OnTriggerEnter(Collider other) => Attack(other.gameObject);
