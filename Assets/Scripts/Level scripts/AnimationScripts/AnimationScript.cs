@@ -26,6 +26,7 @@ public class AnimationScript : MonoBehaviour
     protected void GetAnimationLengths()
     {
         AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
+        
         attackAnimations = new List<animationTime>();
 
         for (int i = 0; i < clips.Length; i++)

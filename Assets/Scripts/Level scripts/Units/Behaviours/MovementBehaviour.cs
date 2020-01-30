@@ -4,6 +4,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class MovementBehaviour : MonoBehaviour
 {
+    // Сделать остановку на дельте, а не точной
     protected Vector3[] waypoints;
     protected int currentWaypoint = 0;
     protected NavMeshAgent navigationAgent;
@@ -15,6 +16,7 @@ public class MovementBehaviour : MonoBehaviour
     {
         navigationAgent = GetComponent<NavMeshAgent>();
         navigationAgent.isStopped = true;
+        
         waypoints = new Vector3[0];       
     }
 
