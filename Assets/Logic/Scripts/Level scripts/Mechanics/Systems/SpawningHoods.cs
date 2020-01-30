@@ -26,7 +26,7 @@ public class SpawningHoods : MonoBehaviour
 
         Vector3 spawnPosition = GetSpawnPosition();
         
-        if(spawnPosition != Vector3.negativeInfinity)
+        if(Vector3.Distance(spawnPosition, Vector3.negativeInfinity) > 1)
         {
             SpawnHoodAt(spawnPosition);
             hoodsSpawned++;

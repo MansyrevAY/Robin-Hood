@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AnimationScript))]
 public abstract class AttackBehaviour : MonoBehaviour
 {
     
@@ -15,7 +14,6 @@ public abstract class AttackBehaviour : MonoBehaviour
     protected int damage = 20;
     protected float attackDuration = 0.5f;
     protected float lastAttacktime = 0;
-    protected AnimationScript animationBehaviour;
 
     protected enum TargetCondition { TargetAlive, TargetKilled};
 

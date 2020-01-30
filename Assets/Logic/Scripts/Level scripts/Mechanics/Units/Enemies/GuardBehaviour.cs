@@ -8,6 +8,12 @@ public class GuardBehaviour : AttackBehaviour
 
     void Awake() => SetBaseStats();
 
+    protected override void SetBaseStats()
+    {
+        damage = originalAttack.damage;
+        attackDuration = originalAttack.attackSpeed;
+    }
+
     private void Update()
     {
         //MakeAttack();
@@ -35,12 +41,5 @@ public class GuardBehaviour : AttackBehaviour
     {
         if (attackers.Count > 0)
             currentTarget = attackers.Dequeue();
-    }
-
-    protected override void SetBaseStats()
-    {
-        damage = originalAttack.damage;
-        attackDuration = originalAttack.attackSpeed;
-        animationBehaviour = GetComponent<AnimationScript>();
-    }
+    }    
 }

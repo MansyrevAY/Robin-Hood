@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6722096947504006825}
   - component: {fileID: -1770081093260017562}
   - component: {fileID: -2156029213629317036}
-  - component: {fileID: 7369752407831845324}
+  - component: {fileID: 1836977252544124938}
   m_Layer: 0
   m_Name: Hood
   m_TagString: Hood
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runtimeSet: {fileID: 11400000, guid: 9a052aa77e1fcb642a126c11ded10e38, type: 2}
---- !u!114 &7369752407831845324
+--- !u!114 &1836977252544124938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 575325757956480815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 764de0b69367d3744880d3906e9659e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1970885ee1581ce4385eeabbaae59136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2472734867516641413
