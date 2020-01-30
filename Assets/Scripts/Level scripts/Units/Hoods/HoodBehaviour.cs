@@ -17,6 +17,7 @@ public class HoodBehaviour : AttackBehaviour
     {
         damage = originalAttack.damage;
         attackDuration = originalAttack.attackSpeed;
+        animationBehaviour = GetComponent<AnimationScript>();
     }
 
     private void Update()
