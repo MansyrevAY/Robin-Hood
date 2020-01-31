@@ -16,8 +16,8 @@ public class MovementBehaviour : MonoBehaviour
     {
         navigationAgent = GetComponent<NavMeshAgent>();
         navigationAgent.isStopped = true;
-        
-        waypoints = new Vector3[0];       
+
+        waypoints = new Vector3[0];
     }
 
     // Update is called once per frame
@@ -59,6 +59,7 @@ public class MovementBehaviour : MonoBehaviour
     public void ChangeDestination(Vector3 destination)
     {
         navigationAgent.isStopped = false;
+        navigationAgent.updatePosition = true;
 
         navigationAgent.SetDestination(destination);
         singleWaypoint = true;
@@ -67,6 +68,7 @@ public class MovementBehaviour : MonoBehaviour
     public void ChangeDestination(Vector3[] waypoints)
     {
         navigationAgent.isStopped = false;
+        navigationAgent.updatePosition = true;
 
         this.waypoints = waypoints;
         currentWaypoint = 0;
@@ -76,5 +78,11 @@ public class MovementBehaviour : MonoBehaviour
     public void StopMovement()
     {
         navigationAgent.isStopped = true;
+        navigationAgent.updatePosition = false;
+
+
+        NavMeshObstacle obs = GetComponent<NavMeshObstacle>();
+        if (obs != null)
+            obs.enabled = true;
     }
 }

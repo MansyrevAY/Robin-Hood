@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
 public class SpawningHoods : MonoBehaviour
@@ -10,6 +11,7 @@ public class SpawningHoods : MonoBehaviour
     private int hoodsSpawned = 1;
     private bool canSpawn = true;
 
+    protected const float maxDistanceFromNonWalkable = 10f;
     // Update is called once per frame
     void Update()
     {
@@ -21,12 +23,13 @@ public class SpawningHoods : MonoBehaviour
 
     private void ShootRayAtMouse()
     {
+        
         if (UIClicked())
             return;
 
         Vector3 spawnPosition = GetSpawnPosition();
         
-        if(spawnPosition != Vector3.negativeInfinity)
+        if(Vector3.Distance(spawnPosition, Vector3.negativeInfinity) > 1)
         {
             SpawnHoodAt(spawnPosition);
             hoodsSpawned++;
@@ -77,9 +80,21 @@ public class SpawningHoods : MonoBehaviour
 
     private void SpawnHoodAt(Vector3 spawnPosition)
     {
-        spawnPosition.y += 0.8f;
+        NavMeshHit hit;
 
-        Instantiate(hoodPrefab, spawnPosition, Quaternion.identity, null);
+        NavMesh.SamplePosition(spawnPosition, out hit, maxDistanceFromNonWalkable, NavMesh.AllAreas);
+
+        #if DEBUG_MODE
+        Debug.Log("Click position: " + spawnPosition);
+        Debug.Log("Closest navMesh position: " + hit.position);
+        #endif
+
+
+        //hit.position.y += 0.8f;
+
+        Vector3 toSpawn = new Vector3(hit.position.x, hit.position.y + 0.8f, hit.position.z);
+
+        Instantiate(hoodPrefab, toSpawn, Quaternion.identity, null);
     }
 
     public void TurnOffSpawning()

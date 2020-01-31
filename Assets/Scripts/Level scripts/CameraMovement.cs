@@ -2,10 +2,10 @@
 
 public class CameraMovement : MonoBehaviour
 {
+    public Collider borders;
     // set in Inspector
     public float movementSpeed;
     public float rotationSpeed;
-
 
     private bool isRightButtonDown = false;
 
@@ -26,10 +26,18 @@ public class CameraMovement : MonoBehaviour
             0,
             Input.GetAxisRaw("Vertical"));
 
+        if (!IsInsideBorders(moveInput))
+            return;
+
         if (moveInput.x != 0 || moveInput.z != 0)
         {
             transform.Translate(moveInput * Time.deltaTime * movementSpeed);
         }
+    }
+
+    private bool IsInsideBorders(Vector3 position)
+    {
+        return borders.bounds.Contains(transform.position + position * Time.deltaTime * movementSpeed);
     }
 
     private void SwitchMouseDown()

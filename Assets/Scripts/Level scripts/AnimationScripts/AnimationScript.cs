@@ -12,30 +12,12 @@ public class AnimationScript : MonoBehaviour
     NavMeshAgent agent;
     protected Animator animator;
     protected AttackBehaviour attack;
-    protected  List<animationTime> attackAnimations;
-    protected int currentAttack = 0;
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         attack = GetComponent<AttackBehaviour>();
-        GetAnimationLengths();
-    }
-
-    protected void GetAnimationLengths()
-    {
-        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
-        
-        attackAnimations = new List<animationTime>();
-
-        for (int i = 0; i < clips.Length; i++)
-        {
-            if (clips[i].name.Contains("attack"))
-            {
-                attackAnimations.Add(new animationTime { name = clips[i].name, duration = clips[i].length });
-            }
-        }
     }
 
     void Update() => SetAnimations();
@@ -52,31 +34,5 @@ public class AnimationScript : MonoBehaviour
 
         if (animator.GetBool("inCombat") != attack.InCombat)
             animator.SetBool("inCombat", attack.InCombat);
-
-        if (!attack.InCombat)
-        {
-            animator.SetInteger("attackNum", -1);
-            currentAttack = 0;
-        }
-    }
-
-    public void PlayNextAttackAnimation()
-    {
-        animator.SetInteger("attackNum", currentAttack);
-        //currentAttack++;
-
-        if (currentAttack == attackAnimations.Count - 1)
-            currentAttack = 0;
-    }
-
-    public float GetNextAttackDuration()
-    {
-        return attackAnimations[currentAttack].duration;
     }
 }
-
-public struct animationTime
-{
-    public string name;
-    public float duration;
-};
