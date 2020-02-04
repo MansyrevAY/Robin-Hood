@@ -4,6 +4,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class MovementBehaviour : MonoBehaviour
 {
+    public float waypointTriggerDelta = 0.5f; // default, can be set in Inspector
+
     // Сделать остановку на дельте, а не точной
     protected Vector3[] waypoints;
     protected int currentWaypoint = 0;
@@ -50,7 +52,11 @@ public class MovementBehaviour : MonoBehaviour
 
     private bool IsAtDestination()
     {
-        if (gameObject.transform.position.x == navigationAgent.destination.x && gameObject.transform.position.z == navigationAgent.destination.z)
+        // Works better without y coordinate
+        Vector2 unitPosition = new Vector2(gameObject.transform.position.x, gameObject.transform.position.z);
+        Vector2 destinationPosition = new Vector2(navigationAgent.destination.x, navigationAgent.destination.z);
+
+        if (Vector2.Distance(unitPosition, destinationPosition) <  waypointTriggerDelta)
             return true;
         else
             return false;

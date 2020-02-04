@@ -8,32 +8,24 @@ public class SquadNavigation : MonoBehaviour
 
     private Vector3[] waypointCoordinates;
     private MovementBehaviour cartMovement;
-    private MovementBehaviour[] guardMovements; // death of guards needs to be handled
 
     void Awake()
     {
         cartMovement = cart.GetComponent<MovementBehaviour>();
         waypointCoordinates = new Vector3[waypoints.Length];
-        guardMovements = new MovementBehaviour[guards.Length];
 
         for (int i = 0; i < waypoints.Length; i++)
         {
             waypointCoordinates[i] = waypoints[i].position;
         }
-
-        // Handle death of the guards first
-        //for (int i = 0; i < guardMovements.Length; i++)
-        //{
-        //    guardMovements[i] = guards[i].GetComponent<MoveToLocation>();
-        //}
     }
 
     private void Start()
     {
-        //StartSquadMoving();
+
     }
 
-
+    // Called by PatrolManager
     public void StartSquadMoving()
     {
         cartMovement.ChangeDestination(waypointCoordinates);
@@ -66,10 +58,10 @@ public class SquadNavigation : MonoBehaviour
         return modifiedWaypoints;
     }
 
+    // Responce for AttackEvent
     public void ReadyForAttack()
     {
         cartMovement.StopMovement();
-
         
         foreach (GameObject guard in guards)
         {
