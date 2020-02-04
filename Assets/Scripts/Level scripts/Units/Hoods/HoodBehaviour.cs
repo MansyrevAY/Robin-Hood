@@ -22,7 +22,10 @@ public class HoodBehaviour : AttackBehaviour
 
     private void Update()
     {
-        //MakeAttack();
+        if (!targetDistributor.TargetsExist)
+        {
+            movement.StopMovement();
+        }
     }
 
     public override void Attack(GameObject guard)

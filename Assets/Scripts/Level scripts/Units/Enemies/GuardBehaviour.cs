@@ -10,7 +10,7 @@ public class GuardBehaviour : AttackBehaviour
 
     private void Update()
     {
-        //MakeAttack();
+        
     }
 
     private void OnTriggerEnter(Collider other) => Attack(other.gameObject);
@@ -26,7 +26,7 @@ public class GuardBehaviour : AttackBehaviour
         if (currentTarget == null)
         {
             currentTarget = attackers.Dequeue();
-            transform.LookAt(currentTarget.transform); // надо переделать в более плавный поворот
+            transform.LookAt(currentTarget.transform); // TODO : надо переделать в более плавный поворот
             targetDamagable = currentTarget.GetComponent<HealthBehaviour>();
         }        
     }
