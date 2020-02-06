@@ -86,7 +86,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575325757956480815}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.65
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9051b14f50c077d43b50b7f30e184d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypointTriggerDelta: 0.5
 --- !u!114 &-1770081093260017562
 MonoBehaviour:
   m_ObjectHideFlags: 0
