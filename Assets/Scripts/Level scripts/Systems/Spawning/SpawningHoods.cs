@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 
 public class SpawningHoods : MonoBehaviour
 {
-    public GameObject hoodPrefab;
+    //public GameObject hoodPrefab; // TODO : просто сделать здесь ссылку на SO с нужным префабом, и менять его
+    public GameObjSO hoodPrefab;
     public int maximumHoods;
 
     private int hoodsSpawned = 1;
@@ -15,6 +16,9 @@ public class SpawningHoods : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (hoodPrefab.gameObject == null)
+            return;
+
         if(Input.GetMouseButtonDown(0) && hoodsSpawned <= maximumHoods && canSpawn)
         {
             ShootRayAtMouse();
@@ -94,7 +98,7 @@ public class SpawningHoods : MonoBehaviour
 
         Vector3 toSpawn = new Vector3(hit.position.x, hit.position.y + 0.8f, hit.position.z);
 
-        Instantiate(hoodPrefab, toSpawn, Quaternion.identity, null);
+        Instantiate(hoodPrefab.gameObject, toSpawn, Quaternion.identity, null);
     }
 
     public void TurnOffSpawning()
