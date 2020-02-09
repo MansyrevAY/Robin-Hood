@@ -108,7 +108,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
     spaceCount: 0
     wordCount: 1
     linkCount: 0
-    lineCount: 1
+    lineCount: 6
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 6540868889015791276}
   - component: {fileID: 6540868889015791279}
   - component: {fileID: 6540868889015791278}
+  - component: {fileID: 347421284703925462}
   m_Layer: 5
   m_Name: Select Unit Button
   m_TagString: Untagged
@@ -273,7 +274,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6540868889015791276}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 347421284703925462}
+        m_MethodName: ReplaceUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6540868889015791278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,3 +306,17 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &347421284703925462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540868889015791248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60bd6839f8d1e814299ea5c8ad9c3b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitHolder: {fileID: 11400000, guid: df0450d5ca0783145a64dc7cdba1ca90, type: 2}
+  unitToReplace: {fileID: 0}

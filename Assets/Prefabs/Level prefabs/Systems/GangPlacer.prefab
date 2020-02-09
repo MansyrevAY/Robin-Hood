@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5524258928016096080}
   - component: {fileID: 2916559001978270930}
+  - component: {fileID: 1733705439}
   m_Layer: 0
   m_Name: GangPlacer
   m_TagString: Untagged
@@ -43,6 +44,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f0dcda97abe57409dc4d663add4521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoodPrefab: {fileID: 575325757956480815, guid: 00407ca634640c944866549bb1d55dff,
-    type: 3}
+  hoodPrefab: {fileID: 11400000, guid: df0450d5ca0783145a64dc7cdba1ca90, type: 2}
   maximumHoods: 4
+--- !u!114 &1733705439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5490275837613149351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b7ccaf5d913d2e4fa165f37177da46c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  responce:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2916559001978270930}
+        m_MethodName: TurnOffSpawning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameEvent: {fileID: 11400000, guid: 86e24ebcaf972324cb242f8928c982fe, type: 2}
