@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(SquadNavigation))]
 public class AttackNotificator : MonoBehaviour
 {
     public GameObjRuntimeSetSO allPatrols;
+    public SquadNavigation squadNavigation;
 
     private bool hasStopped = false;
+
+    void Awake()
+    {
+        if (squadNavigation == null)
+            Debug.LogError("Squad navigation should be set to parent's patrol navigation");
+    }
 
     // Update is called once per frame
     void Update()
@@ -28,7 +34,8 @@ public class AttackNotificator : MonoBehaviour
     {
         foreach (GameObject patrol in allPatrols.set)
         {
-            patrol.GetComponent<AttackNotificator>().StopPatrol();
+            //patrol.GetComponent<AttackNotificator>().StopPatrol();
+            patrol.GetComponentInChildren<AttackNotificator>(false).StopPatrol();
         }
     }
 
@@ -38,6 +45,6 @@ public class AttackNotificator : MonoBehaviour
             return;
 
         hasStopped = true;
-        GetComponent<SquadNavigation>().ReadyForAttack();
+        squadNavigation.ReadyForAttack();
     }
 }

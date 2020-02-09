@@ -93,6 +93,9 @@ GameObject:
   - component: {fileID: 6184940581092299282}
   - component: {fileID: 3255414973610154362}
   - component: {fileID: -7989552774568530784}
+  - component: {fileID: 2614982084133647426}
+  - component: {fileID: 640053541588177222}
+  - component: {fileID: 7932296367157656435}
   m_Layer: 0
   m_Name: Cart
   m_TagString: Untagged
@@ -185,17 +188,17 @@ NavMeshAgent:
   m_GameObject: {fileID: 4503049470124449099}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.36
+  m_Radius: 0.43
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 12
   avoidancePriority: 80
-  m_AngularSpeed: 120
+  m_AngularSpeed: 145
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: 0.34
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!54 &-7989552774568530784
@@ -210,10 +213,50 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &2614982084133647426
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503049470124449099}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.94
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &640053541588177222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503049470124449099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e687d3c32ba674eb83caa2a87d33db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allPatrols: {fileID: 11400000, guid: a6df0dc09daf67e4a82717dd7f62a309, type: 2}
+  squadNavigation: {fileID: 0}
+--- !u!114 &7932296367157656435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503049470124449099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9051b14f50c077d43b50b7f30e184d1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypointTriggerDelta: 0.5
 --- !u!1 &5278620250660926386
 GameObject:
   m_ObjectHideFlags: 0
