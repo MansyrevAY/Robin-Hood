@@ -64,6 +64,9 @@ public class MovementBehaviour : MonoBehaviour
 
     public void ChangeDestination(Vector3 destination)
     {
+        if (navigationAgent.destination == destination)
+            return;
+
         navigationAgent.isStopped = false;
         navigationAgent.updatePosition = true;
 

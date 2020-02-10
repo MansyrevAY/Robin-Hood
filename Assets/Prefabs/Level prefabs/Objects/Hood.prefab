@@ -106,6 +106,7 @@ MonoBehaviour:
   originalAttack: {fileID: 11400000, guid: 4fb9561ff6bea7e4b998e34adcd019e6, type: 2}
   targetDistributor: {fileID: 8009548171681204269, guid: 671177a9f7984b240854aa2be2d8d055,
     type: 3}
+  targetUpdateSpeed: 1
 --- !u!114 &6722096947504006825
 MonoBehaviour:
   m_ObjectHideFlags: 0
