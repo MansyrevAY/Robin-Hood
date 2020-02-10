@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de51089599451824f827c91938109628, type: 3}
   m_Name: UnitToSpawn
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 575325757956480815, guid: 00407ca634640c944866549bb1d55dff,
-    type: 3}
+  gameObject: {fileID: 0}

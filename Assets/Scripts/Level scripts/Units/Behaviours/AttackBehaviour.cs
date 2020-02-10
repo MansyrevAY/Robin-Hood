@@ -30,7 +30,7 @@ public abstract class AttackBehaviour : MonoBehaviour
         if (currentTarget == null || targetDamagable == null || !currentTarget.activeInHierarchy)
         {
             InCombat = false;
-            GetNextTarget();            
+            GetNextTarget();
         }
 
         else

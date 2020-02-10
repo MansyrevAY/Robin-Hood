@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
@@ -13,6 +14,12 @@ public class SpawningHoods : MonoBehaviour
     private bool canSpawn = true;
 
     protected const float maxDistanceFromNonWalkable = 10f;
+
+    private void Awake()
+    {
+        hoodPrefab.gameObject = null;
+    }
+
     // Update is called once per frame
     void Update()
     {
