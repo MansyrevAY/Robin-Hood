@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 33264041529804706}
   - component: {fileID: 23612501818743164}
   - component: {fileID: 95460592423374290}
-  - component: {fileID: 4966622946987640164}
   - component: {fileID: 1657839668286129547}
+  - component: {fileID: 5723126186734877504}
   m_Layer: 0
   m_Name: SM_Rock_Boulder_01
   m_TagString: Untagged
@@ -101,19 +101,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!135 &4966622946987640164
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732272334065596}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.86
-  m_Center: {x: 0, y: -0.000000059604645, z: 0}
 --- !u!54 &1657839668286129547
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,3 +117,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!208 &5723126186734877504
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732272334065596}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.72, y: 1.3330001, z: 1.72}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
