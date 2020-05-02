@@ -5,10 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(AnimationScript))]
 public abstract class AttackBehaviour : MonoBehaviour
 {
-    
+
     public AttackSO originalAttack;
 
     public bool InCombat { get; protected set; }
+    protected bool ShouldUpdatePosition { get => ShouldUpdatePosition1; set => ShouldUpdatePosition1 = value; }
+
 
     protected HealthBehaviour targetDamagable;
     protected GameObject currentTarget;
@@ -17,7 +19,10 @@ public abstract class AttackBehaviour : MonoBehaviour
     protected float lastAttacktime = 0;
     protected AnimationScript animationBehaviour;
 
-    protected enum TargetCondition { TargetAlive, TargetKilled};
+    private bool shouldUpdatePosition = false;
+    public bool ShouldUpdatePosition1 { get => shouldUpdatePosition & (currentTarget != null); set => shouldUpdatePosition = value; }
+
+    protected enum TargetCondition { TargetAlive, TargetKilled };
 
     /// <summary>
     /// Starts to perform attacking actions for the target
@@ -30,6 +35,7 @@ public abstract class AttackBehaviour : MonoBehaviour
         if (currentTarget == null || targetDamagable == null || !currentTarget.activeInHierarchy)
         {
             InCombat = false;
+            ShouldUpdatePosition1 = false;
             GetNextTarget();
         }
 
@@ -38,10 +44,11 @@ public abstract class AttackBehaviour : MonoBehaviour
             if (DealDamageToTarget() == TargetCondition.TargetKilled)
             {
                 InCombat = false;
-                GetNextTarget();                
+                currentTarget = null;
+                GetNextTarget();
             }
         }
-        
+
     }
 
     /// <summary>
@@ -57,19 +64,19 @@ public abstract class AttackBehaviour : MonoBehaviour
         if (currentTarget.activeInHierarchy)
         {
             targetDamagable.TakeDamage(damage, out isDead);
-        }            
+        }
 
         if (isDead)
             return TargetCondition.TargetKilled;
 
-        return TargetCondition.TargetAlive;        
+        return TargetCondition.TargetAlive;
     }
 
     /// <summary>
     /// Switches target according to individual algorythms
     /// </summary>
     protected abstract void GetNextTarget();
-    
+
     /// <summary>
     /// Sets up stats got from Scriptable Object
     /// </summary>

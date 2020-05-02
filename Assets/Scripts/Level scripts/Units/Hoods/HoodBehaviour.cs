@@ -9,7 +9,7 @@ public class HoodBehaviour : AttackBehaviour
     public float targetUpdateSpeed;
 
     private MovementBehaviour movement;
-    private IEnumerator updateCoroutine;
+
 
     private void Awake()
     {
@@ -29,7 +29,16 @@ public class HoodBehaviour : AttackBehaviour
         if (!targetDistributor.TargetsExist)
         {
             movement.StopMovement();
-        }                
+            ShouldUpdatePosition = false;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (targetDistributor.TargetsExist && ShouldUpdatePosition)
+        {
+            movement.ChangeDestination(currentTarget.transform.position);
+        }
     }
 
     public override void Attack(GameObject guard)
@@ -38,16 +47,15 @@ public class HoodBehaviour : AttackBehaviour
         movement.ChangeDestination(guard.transform.position);
         targetDamagable = currentTarget.GetComponent<HealthBehaviour>();
 
-        updateCoroutine = updateTarget(guard.transform);
-        StartCoroutine(updateCoroutine);
+        ShouldUpdatePosition = true;
     }
 
     IEnumerator updateTarget(Transform guardPosition)
     {
-        while(true)
+        while (true)
         {
-            movement.ChangeDestination(guardPosition.position);
             yield return new WaitForSeconds(targetUpdateSpeed);
+            movement.ChangeDestination(guardPosition.position);
         }
     }
 
@@ -57,14 +65,16 @@ public class HoodBehaviour : AttackBehaviour
         {
             InCombat = true;
             movement.StopMovement();
-            StopCoroutine(updateCoroutine);
+            ShouldUpdatePosition = false;
             transform.LookAt(other.transform);
         }
     }
 
     protected override void GetNextTarget()
     {
-        if (targetDistributor.TargetsExist)
+        if (!targetDistributor.TargetsExist)
+            ShouldUpdatePosition = false;
+        else
             Attack(targetDistributor.GetTargetFor(gameObject));
     }
 }
