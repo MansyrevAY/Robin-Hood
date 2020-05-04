@@ -20,7 +20,6 @@ public class HoodBehaviour : AttackBehaviour
     protected override void SetBaseStats()
     {
         damage = originalAttack.damage;
-        attackDuration = originalAttack.attackSpeed;
         animationBehaviour = GetComponent<AnimationScript>();
     }
 

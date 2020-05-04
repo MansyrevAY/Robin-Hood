@@ -1,7 +1,6 @@
 ﻿//#define DEBUG_MODE
 
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -32,7 +31,25 @@ public class AnimationScript : MonoBehaviour
 
         animator.SetFloat("speedPercent", speedPercent, locomotionAnimationSmoothTime, Time.deltaTime);
 
+        if(attack.InCombat)
+            SetAttackSpeed();
+
         if (animator.GetBool("inCombat") != attack.InCombat)
             animator.SetBool("inCombat", attack.InCombat);
     }
+
+    private void SetAttackSpeed()
+    {
+        AnimatorController ac = animator.runtimeAnimatorController as AnimatorController;
+
+        AnimatorStateMachine sm = ac.layers[0].stateMachine;
+
+        foreach (ChildAnimatorState child in sm.states)
+        {
+            if (child.state.speed != attack.originalAttack.attackSpeed && child.state.name.Contains("attack"))
+                child.state.speed = attack.originalAttack.attackSpeed;
+        }
+    }
+
+
 }

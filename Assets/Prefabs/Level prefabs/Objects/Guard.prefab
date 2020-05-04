@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9051b14f50c077d43b50b7f30e184d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypointTriggerDelta: 0.5
 --- !u!114 &3703836152692004976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +276,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8266155435012495116}
     m_Modifications:
+    - target: {fileID: 1875788298802861673, guid: 39451355c1c58e74fab1be90fe955e0b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.091581665
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875788298802861673, guid: 39451355c1c58e74fab1be90fe955e0b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.000779643
+      objectReference: {fileID: 0}
     - target: {fileID: 3128036641980570671, guid: 39451355c1c58e74fab1be90fe955e0b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -335,11 +346,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: footman_Red_Polyart
       objectReference: {fileID: 0}
+    - target: {fileID: 4086789055871468857, guid: 39451355c1c58e74fab1be90fe955e0b,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a603f7b39b0142b4c9da85dadb809e3e, type: 2}
     - target: {fileID: 4329300553319118793, guid: 39451355c1c58e74fab1be90fe955e0b,
         type: 3}
       propertyPath: attack
       value: 
       objectReference: {fileID: 8266155435012495120}
+    - target: {fileID: 7530525874478796708, guid: 39451355c1c58e74fab1be90fe955e0b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.030814849
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530525874478796708, guid: 39451355c1c58e74fab1be90fe955e0b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.13817634
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39451355c1c58e74fab1be90fe955e0b, type: 3}
 --- !u!4 &675767442359162054 stripped
