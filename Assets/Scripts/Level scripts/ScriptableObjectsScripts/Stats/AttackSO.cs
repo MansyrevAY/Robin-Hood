@@ -6,7 +6,9 @@ using UnityEngine;
 [System.Serializable]
 public class AttackSO : ScriptableObject
 {
-    [SerializeField]
     public int damage;
+
+    [Tooltip("1 is normal speed")]
+    [Range(0,2)]
     public float attackSpeed;
 }

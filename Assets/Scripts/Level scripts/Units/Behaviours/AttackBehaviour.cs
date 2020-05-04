@@ -15,12 +15,15 @@ public abstract class AttackBehaviour : MonoBehaviour
     protected HealthBehaviour targetDamagable;
     protected GameObject currentTarget;
     protected int damage = 20;
-    protected float attackDuration = 0.5f;
     protected float lastAttacktime = 0;
     protected AnimationScript animationBehaviour;
 
+    private float _attackSpeed = 0f;
+    public float AttackSpeed { get => _attackSpeed == 0f ? _attackSpeed : originalAttack.attackSpeed; }
+
     private bool shouldUpdatePosition = false;
     public bool ShouldUpdatePosition1 { get => shouldUpdatePosition & (currentTarget != null); set => shouldUpdatePosition = value; }
+    
 
     protected enum TargetCondition { TargetAlive, TargetKilled };
 
