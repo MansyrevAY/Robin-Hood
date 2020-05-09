@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Attack Stat
   m_EditorClassIdentifier: 
   damage: 20
-  attackSpeed: 2
+  attackSpeed: 0.93

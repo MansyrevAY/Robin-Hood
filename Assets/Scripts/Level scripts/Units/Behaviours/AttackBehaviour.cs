@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AnimationScript))]
+[RequireComponent(typeof(MovementBehaviour))]
 public abstract class AttackBehaviour : MonoBehaviour
 {
-
     public AttackSO originalAttack;
 
     public bool InCombat { get; protected set; }
-    protected bool ShouldUpdatePosition { get => ShouldUpdatePosition1; set => ShouldUpdatePosition1 = value; }
-
 
     protected HealthBehaviour targetDamagable;
     protected GameObject currentTarget;
@@ -19,11 +17,7 @@ public abstract class AttackBehaviour : MonoBehaviour
     protected AnimationScript animationBehaviour;
 
     private float _attackSpeed = 0f;
-    public float AttackSpeed { get => _attackSpeed == 0f ? _attackSpeed : originalAttack.attackSpeed; }
-
-    private bool shouldUpdatePosition = false;
-    public bool ShouldUpdatePosition1 { get => shouldUpdatePosition & (currentTarget != null); set => shouldUpdatePosition = value; }
-    
+    public float AttackSpeed { get => _attackSpeed == 0f ? _attackSpeed : originalAttack.attackSpeed; }    
 
     protected enum TargetCondition { TargetAlive, TargetKilled };
 
@@ -38,7 +32,6 @@ public abstract class AttackBehaviour : MonoBehaviour
         if (currentTarget == null || targetDamagable == null || !currentTarget.activeInHierarchy)
         {
             InCombat = false;
-            ShouldUpdatePosition1 = false;
             GetNextTarget();
         }
 

@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 69936522}
   - component: {fileID: 69936523}
   - component: {fileID: 69936524}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Zone Borders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1870,7 +1870,7 @@ GameObject:
   - component: {fileID: 932468486}
   - component: {fileID: 932468487}
   m_Layer: 4
-  m_Name: Whater
+  m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2665,12 +2665,12 @@ PrefabInstance:
         type: 3}
       propertyPath: unitToReplace
       value: 
-      objectReference: {fileID: 8266155435012495125, guid: 2246012f40bd2af43b783bcaef2a45d2,
+      objectReference: {fileID: 8714513153821457532, guid: 6413210aa691c9648aa2914777fdac81,
         type: 3}
     - target: {fileID: 6540868887582890284, guid: 4dc008c45f0d71b4eb5a2a8d53be48a2,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6540868887582890284, guid: 4dc008c45f0d71b4eb5a2a8d53be48a2,
         type: 3}
@@ -2690,12 +2690,17 @@ PrefabInstance:
     - target: {fileID: 6540868887582890284, guid: 4dc008c45f0d71b4eb5a2a8d53be48a2,
         type: 3}
       propertyPath: m_text
-      value: Guard
+      value: Archer
       objectReference: {fileID: 0}
     - target: {fileID: 6540868887582890284, guid: 4dc008c45f0d71b4eb5a2a8d53be48a2,
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540868887582890284, guid: 4dc008c45f0d71b4eb5a2a8d53be48a2,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6540868889015791248, guid: 4dc008c45f0d71b4eb5a2a8d53be48a2,
         type: 3}
@@ -3251,6 +3256,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Patrol
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094163172202187506, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6094163172202187507, guid: 92342343077b9cc4aad0d0bb74144c10,
         type: 3}
