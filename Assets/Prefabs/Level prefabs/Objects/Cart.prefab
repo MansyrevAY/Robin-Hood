@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 640053541588177222}
   - component: {fileID: 7932296367157656435}
   - component: {fileID: 5006255227530765780}
+  - component: {fileID: -4496003781187888387}
   m_Layer: 0
   m_Name: Cart
   m_TagString: Untagged
@@ -112,7 +113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4503049470124449099}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 171.86, y: 8.65, z: 163.83}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0388, y: 0.63130414, z: 2.162}
   m_Children:
   - {fileID: 8064948346949933863}
@@ -177,9 +178,9 @@ BoxCollider:
   m_GameObject: {fileID: 4503049470124449099}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.27, y: 1.15, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &3255414973610154362
 NavMeshAgent:
@@ -275,6 +276,22 @@ MonoBehaviour:
   levelState: {fileID: 11400000, guid: a5c3e484f08219a44b08d35a09b0ce96, type: 2}
   coinNumber: 2
   pauseBetweenCoins: 0.6
+--- !u!208 &-4496003781187888387
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503049470124449099}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.5, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5278620250660926386
 GameObject:
   m_ObjectHideFlags: 0
