@@ -30,6 +30,9 @@ public class MovementBehaviour : MonoBehaviour
 
     protected void CheckIfReachedWaypoint()
     {
+        if (!navigationAgent.enabled)
+            return;
+
         if (navigationAgent.isStopped)
             return;
 
@@ -64,6 +67,8 @@ public class MovementBehaviour : MonoBehaviour
 
     public void ChangeDestination(Vector3 destination)
     {
+        SetObstacleActive(false);
+
         if (navigationAgent.destination == destination)
             return;
 
@@ -76,6 +81,8 @@ public class MovementBehaviour : MonoBehaviour
 
     public void ChangeDestination(Vector3[] waypoints)
     {
+        SetObstacleActive(false);
+
         navigationAgent.isStopped = false;
         navigationAgent.updatePosition = true;
 
@@ -90,8 +97,16 @@ public class MovementBehaviour : MonoBehaviour
         navigationAgent.updatePosition = false;
 
 
-        NavMeshObstacle obs = GetComponent<NavMeshObstacle>();
-        if (obs != null)
-            obs.enabled = true;
+        SetObstacleActive(true);
+    }
+
+    private void SetObstacleActive(bool active)
+    {
+        NavMeshObstacle obstacle = GetComponent<NavMeshObstacle>();
+        if (obstacle != null)
+        {
+            navigationAgent.enabled = !active;
+            obstacle.enabled = active;
+        }
     }
 }
