@@ -38,7 +38,7 @@ public class HoodBehaviour : AttackBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<HealthBehaviour>())
+        if (other.gameObject.GetComponent<HealthBehaviour>() && other.tag != "Hood")
         {
             InCombat = true;
             movement.StopMovement();

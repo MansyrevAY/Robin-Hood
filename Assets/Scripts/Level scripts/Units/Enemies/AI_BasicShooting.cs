@@ -21,8 +21,9 @@ public abstract class AIShoot
         Vector3 shooterPosition = shooter.transform.position;
         Vector3 targetPosition = target.transform.position;
         //velocities
-        Vector3 shooterVelocity = shooter.GetComponent<Rigidbody>() ? shooter.GetComponent<Rigidbody>().velocity : Vector3.zero;     
-        Vector3 targetVelocity = target.GetComponent<Rigidbody>() ? target.GetComponent<Rigidbody>().velocity : Vector3.zero;
+        Vector3 shooterVelocity = shooter.GetComponent<Rigidbody>() ? shooter.GetComponent<Rigidbody>().velocity : Vector3.zero;
+        //Vector3 targetVelocity = target.GetComponent<Rigidbody>() ? target.GetComponent<Rigidbody>().velocity : Vector3.zero;  // Rigidbody version
+        Vector3 targetVelocity = target.GetComponent<NavMeshAgent>() ? target.GetComponent<NavMeshAgent>().velocity : Vector3.zero;
 
         //calculate intercept
         Vector3 interceptPoint = FirstOrderIntercept

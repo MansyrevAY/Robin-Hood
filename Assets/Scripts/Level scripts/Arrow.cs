@@ -7,6 +7,13 @@ public class Arrow : MonoBehaviour
     Rigidbody rigidbody;
 
     private bool shouldSpin = true;
+    private int arrowDamage;
+
+    public void Init(int arrowDamage)
+    {
+        this.arrowDamage = arrowDamage;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,21 +23,8 @@ public class Arrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.LookAt(rigidbody.velocity);
         if(shouldSpin)
             SpinObject();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == 8 || collision.gameObject.name.Contains("Archer")) // TODO : придумать более нормальный способ
-            return;
-
-        shouldSpin = false;
-        rigidbody.isKinematic = true;
-        rigidbody.velocity = Vector3.zero;
-        rigidbody.useGravity = false;
-
     }
 
     void SpinObject()
@@ -43,4 +37,29 @@ public class Arrow : MonoBehaviour
 
         transform.eulerAngles = new Vector3(fallAngle, transform.eulerAngles.y, transform.eulerAngles.z);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 8 || collision.gameObject.name.Contains("Archer")) // TODO : придумать более нормальный способ
+            return;
+
+        shouldSpin = false;
+        rigidbody.isKinematic = true;
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.useGravity = false;
+
+        transform.parent = collision.transform;
+        TryDealDamage(collision.gameObject.GetComponent<HealthBehaviour>());
+    }
+
+    private void TryDealDamage(HealthBehaviour targetHealth)
+    {
+        if (targetHealth == null)
+            return;
+        bool condition = false;
+
+        targetHealth.TakeDamage(arrowDamage,  out condition);
+    }
+
+    
 }

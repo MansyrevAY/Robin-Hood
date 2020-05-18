@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(SphereCollider))]
 public class HoodArcherBehaviour : AttackBehaviour
@@ -59,7 +60,6 @@ public class HoodArcherBehaviour : AttackBehaviour
     {
         if(other.gameObject == currentTarget)
         {
-            Debug.Log("Target " + currentTarget.name + " is in range");
             movement.StopMovement();
             
             targetDamagable = currentTarget.GetComponent<HealthBehaviour>();
@@ -71,7 +71,6 @@ public class HoodArcherBehaviour : AttackBehaviour
 
     public override void MakeAttack()
     {
-
         if (currentTarget == null || targetDamagable == null || !currentTarget.activeInHierarchy)
         {
             InCombat = false;
@@ -80,14 +79,19 @@ public class HoodArcherBehaviour : AttackBehaviour
 
         else
         {
-            GameObject arrowClone = Instantiate(arrow, arrowPoint.position, arrowPoint.rotation, ArrowAnchor.transform);
-            Rigidbody rb = arrowClone.GetComponent<Rigidbody>();
-
-            rb.AddForce(arrowPoint.forward * arrowForce, ForceMode.Impulse);
-            transform.LookAt(AIShoot.AimAtTarget(this.gameObject, currentTarget, rb.velocity.magnitude));
-
-            //arrowClone.transform.LookAt(AIShoot.AimAtTarget(this.gameObject, currentTarget, rb.velocity.magnitude));
+            SpawnArrow();
         }
+    }
+
+    private void SpawnArrow()
+    {
+        Vector3 predictedPosition = AIShoot.AimAtTarget(arrowPoint.gameObject, currentTarget, (arrowPoint.forward * arrowForce).magnitude);
+        transform.LookAt(predictedPosition);
+
+        GameObject arrowClone = Instantiate(arrow, arrowPoint.position, arrowPoint.rotation, ArrowAnchor.transform);
+        
+        arrowClone.GetComponent<Arrow>().Init(originalAttack.damage);
+        arrowClone.GetComponent<Rigidbody>().velocity = arrowPoint.forward * arrowForce;
     }
 
     protected override void GetNextTarget()

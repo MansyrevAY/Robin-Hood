@@ -1305,10 +1305,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Bridge_Curved_01
       objectReference: {fileID: 0}
-    - target: {fileID: 1290192323667180, guid: 387d93711c1d03a48b083591256c560c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 4109834554446322, guid: 387d93711c1d03a48b083591256c560c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.2496796
@@ -1351,15 +1347,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4109834554446322, guid: 387d93711c1d03a48b083591256c560c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4109834554446322, guid: 387d93711c1d03a48b083591256c560c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.5161471
-      objectReference: {fileID: 0}
-    - target: {fileID: 6351661869844411852, guid: 387d93711c1d03a48b083591256c560c,
-        type: 3}
-      propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

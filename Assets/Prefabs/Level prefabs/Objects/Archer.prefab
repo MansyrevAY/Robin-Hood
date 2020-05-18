@@ -122,13 +122,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6376104580355800207}
-  m_LocalRotation: {x: -0.21031922, y: -0, z: -0, w: 0.97763276}
-  m_LocalPosition: {x: -0.132, y: 0.678, z: 0.105}
+  m_LocalRotation: {x: -0.089572564, y: -0, z: -0, w: 0.9959804}
+  m_LocalPosition: {x: 0, y: 0.671, z: 0.061}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4461348081110031762}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -24.282001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -10.278001, y: 0, z: 0}
 --- !u!1 &8714513153821457532
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bec7d70ccb26604e8e8ce58badd0179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalHealth: {fileID: 11400000, guid: abd257a28b3c9b84b942dbbd85e3893d, type: 2}
+  originalHealth: {fileID: 11400000, guid: d3382d94af8bb0744809c68ee759290c, type: 2}
   health: 0
   hpBarImage: {fileID: 2771000479335114644}
 --- !u!114 &43716674545308192
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74abe49a48966bb4aa68d1d9d61a32b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalAttack: {fileID: 11400000, guid: 4fb9561ff6bea7e4b998e34adcd019e6, type: 2}
+  originalAttack: {fileID: 11400000, guid: 4f8a886d35f9fe943b8ee8002c464d63, type: 2}
   targetDistributor: {fileID: 8009548171681204269, guid: 671177a9f7984b240854aa2be2d8d055,
     type: 3}
   attackRange: 0
