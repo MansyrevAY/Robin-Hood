@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(MovementBehaviour))]
 public class HoodBehaviour : AttackBehaviour
 {
     public DistributeAttackers targetDistributor;
@@ -9,7 +8,6 @@ public class HoodBehaviour : AttackBehaviour
     public float targetUpdateSpeed;
 
     private MovementBehaviour movement;
-
 
     private void Awake()
     {
@@ -28,52 +26,29 @@ public class HoodBehaviour : AttackBehaviour
         if (!targetDistributor.TargetsExist)
         {
             movement.StopMovement();
-            ShouldUpdatePosition = false;
-        }
-    }
-
-    private void LateUpdate()
-    {
-        if (targetDistributor.TargetsExist && ShouldUpdatePosition)
-        {
-            movement.ChangeDestination(currentTarget.transform.position);
         }
     }
 
     public override void Attack(GameObject guard)
     {
         currentTarget = guard;
-        movement.ChangeDestination(guard.transform.position);
+        movement.Chase(guard);
         targetDamagable = currentTarget.GetComponent<HealthBehaviour>();
-
-        ShouldUpdatePosition = true;
-    }
-
-    IEnumerator updateTarget(Transform guardPosition)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(targetUpdateSpeed);
-            movement.ChangeDestination(guardPosition.position);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.GetComponent<HealthBehaviour>() && other.tag != "Hood")
         {
             InCombat = true;
             movement.StopMovement();
-            ShouldUpdatePosition = false;
             transform.LookAt(other.transform);
         }
     }
 
     protected override void GetNextTarget()
     {
-        if (!targetDistributor.TargetsExist)
-            ShouldUpdatePosition = false;
-        else
+        if(targetDistributor.TargetsExist)
             Attack(targetDistributor.GetTargetFor(gameObject));
     }
 }

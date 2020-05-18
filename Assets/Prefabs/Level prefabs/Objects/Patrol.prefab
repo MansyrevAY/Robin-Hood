@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6094163172202187504}
   - component: {fileID: 6094163172202187507}
   - component: {fileID: 6094163172202187505}
-  - component: {fileID: 850739242}
   m_Layer: 0
   m_Name: Patrol
   m_TagString: Untagged
@@ -74,33 +73,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runtimeSet: {fileID: 11400000, guid: a6df0dc09daf67e4a82717dd7f62a309, type: 2}
---- !u!114 &850739242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6094163172202187506}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b7ccaf5d913d2e4fa165f37177da46c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  responce:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6094163172202187507}
-        m_MethodName: ReadyForAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  gameEvent: {fileID: 11400000, guid: b856e2c66e8b1b546bcbae4a377bd656, type: 2}
 --- !u!208 &1908522148
 NavMeshObstacle:
   m_ObjectHideFlags: 0

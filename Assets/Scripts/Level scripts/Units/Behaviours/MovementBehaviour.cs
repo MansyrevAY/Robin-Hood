@@ -13,6 +13,11 @@ public class MovementBehaviour : MonoBehaviour
 
     private bool singleWaypoint = false;
 
+    private GameObject currentTarget;
+    private bool shouldUpdatePosition = false;
+    protected bool ShouldUpdatePosition { get => shouldUpdatePosition & (currentTarget != null); set => shouldUpdatePosition = value; }
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,6 +31,14 @@ public class MovementBehaviour : MonoBehaviour
     void Update()
     {
         CheckIfReachedWaypoint();
+    }
+
+    private void LateUpdate()
+    {
+        if (ShouldUpdatePosition)
+        {
+            ChangeDestination(currentTarget.transform.position);
+        }
     }
 
     protected void CheckIfReachedWaypoint()
@@ -44,6 +57,7 @@ public class MovementBehaviour : MonoBehaviour
             if(singleWaypoint)
             {
                 singleWaypoint = false;
+                shouldUpdatePosition = false;
                 return;
             }
 
@@ -91,11 +105,19 @@ public class MovementBehaviour : MonoBehaviour
         navigationAgent.SetDestination(this.waypoints[currentWaypoint]);
     }
 
+    public void Chase(GameObject target)
+    {
+        ChangeDestination(target.transform.position);
+
+        currentTarget = target;
+        shouldUpdatePosition = true;
+    }
+
     public void StopMovement()
     {
         navigationAgent.isStopped = true;
         navigationAgent.updatePosition = false;
-
+        ShouldUpdatePosition = false;
 
         SetObstacleActive(true);
     }

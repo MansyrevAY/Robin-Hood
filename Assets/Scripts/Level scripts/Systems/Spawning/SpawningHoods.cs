@@ -81,12 +81,24 @@ public class SpawningHoods : MonoBehaviour
 
         hitInfo = Physics.RaycastAll(ray, 150);
 
-        if (hitInfo.Length > 1 || hitInfo[0].transform.name != "Terrain")
+        //if (hitInfo.Length > 1 || hitInfo[0].transform.name != "Terrain")
+        if (HitEnemy(hitInfo))
             resultPosition = Vector3.negativeInfinity;
         else
             resultPosition = hitInfo[0].point;
 
         return resultPosition;
+    }
+
+    private bool HitEnemy(RaycastHit[] hitInfo)
+    {
+        foreach (RaycastHit hit in hitInfo)
+        {
+            if (hit.transform.tag == "Enemy")
+                return true;
+        }
+
+        return false;
     }
 
     private void SpawnHoodAt(Vector3 spawnPosition)
