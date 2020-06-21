@@ -264,9 +264,10 @@ MonoBehaviour:
   originalAttack: {fileID: 11400000, guid: 4f8a886d35f9fe943b8ee8002c464d63, type: 2}
   targetDistributor: {fileID: 8009548171681204269, guid: 671177a9f7984b240854aa2be2d8d055,
     type: 3}
-  attackRange: 0
+  attackRange: 5
   arrow: {fileID: 111768, guid: 802986766a97b4a108b97eb5fdf6e02f, type: 3}
   arrowPoint: {fileID: 5623856949704481461}
+  attackRadiusCollider: {fileID: 6332488781959129616}
   arrowForce: 10
 --- !u!135 &6332488781959129616
 SphereCollider:
@@ -279,7 +280,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 4.5
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &750436011949531051
 MonoBehaviour:

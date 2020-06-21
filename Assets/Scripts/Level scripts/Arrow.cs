@@ -40,7 +40,7 @@ public class Arrow : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 8 || collision.gameObject.name.Contains("Archer")) // TODO : придумать более нормальный способ
+        if (collision.gameObject.layer == 8 || collision.gameObject.name.Contains("Archer") || collision.gameObject.name.Contains("Arrow")) // TODO : придумать более нормальный способ
             return;
 
         shouldSpin = false;
