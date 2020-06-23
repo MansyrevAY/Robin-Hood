@@ -14,10 +14,8 @@ namespace Tools
 
         public void StartTimer(float time, Action action)
         {
-            ResetTimer();
-
             IsActive = true;
-            callback += action;
+            callback = action;
             _time = time;
         }
 
@@ -27,14 +25,13 @@ namespace Tools
 
             if (_currentTime >= _time)
             {
+                StopTimer();
                 callback.Invoke();
-                ResetTimer();
             }
         }
 
-        private void ResetTimer()
+        private void StopTimer()
         {
-            callback = null;
             IsActive = false;
             _currentTime = 0f;
         }

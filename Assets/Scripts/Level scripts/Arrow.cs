@@ -60,6 +60,4 @@ public class Arrow : MonoBehaviour
 
         targetHealth.TakeDamage(arrowDamage,  out condition);
     }
-
-    
 }
