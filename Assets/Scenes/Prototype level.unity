@@ -3774,10 +3774,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 69552409928333289, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3179755346450142730, guid: 92342343077b9cc4aad0d0bb74144c10,
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3509708414206556074, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696101971291492858, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5887485227314937299, guid: 92342343077b9cc4aad0d0bb74144c10,
         type: 3}
@@ -3869,6 +3884,11 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 452288334}
+    - target: {fileID: 6278663076426385157, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6566147272929442035, guid: 92342343077b9cc4aad0d0bb74144c10,
         type: 3}
       propertyPath: m_IsActive
@@ -3883,6 +3903,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066716846534479244, guid: 92342343077b9cc4aad0d0bb74144c10,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92342343077b9cc4aad0d0bb74144c10, type: 3}

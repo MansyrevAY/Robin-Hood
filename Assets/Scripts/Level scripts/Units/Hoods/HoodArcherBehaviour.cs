@@ -1,20 +1,28 @@
-﻿using UnityEngine;
-using UnityEngine.AI;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using Tools;
 
 [RequireComponent(typeof(SphereCollider))]
 public class HoodArcherBehaviour : AttackBehaviour
 {
     public DistributeAttackers targetDistributor;
-    public float attackRange;
+    [SerializeField]
+    private float _attackRange;
     public GameObject arrow;
     public Transform arrowPoint;
 
+    private bool _encounteredTarget = false;
+    private Timer _shootTimer;
+    [SerializeField]
+    private SphereCollider _attackRadiusCollider;
+    
     private static GameObject _arrowAnchor;
-    public static GameObject ArrowAnchor
+    private static GameObject ArrowAnchor
     {
         get
         {
-            if(_arrowAnchor == null)
+            if(ReferenceEquals(null, _arrowAnchor))
             {
                 _arrowAnchor = new GameObject("Arrow anchor");
             }
@@ -24,65 +32,97 @@ public class HoodArcherBehaviour : AttackBehaviour
     }
     public float arrowForce;
 
-    private MovementBehaviour movement;
+    private MovementBehaviour _movement;
+
+    #region Unity Events
+    private void Awake()
+    {
+        _shootTimer = new Timer();
+        _movement = GetComponent<MovementBehaviour>();
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, _attackRange);
+    }
+
+    private void Update()
+    {
+        CheckTarget();
+        
+        if(_shootTimer.IsActive)
+            _shootTimer.Update(Time.deltaTime);
+    }
+    #endregion // Unity Events
+    
+    private void CheckTarget()
+    {
+        if (_encounteredTarget)
+            return;
+        if (!currentTarget)
+            return;
+
+        if (TargetIsInRange())
+        {
+            _encounteredTarget = true;
+            _movement.StopMovement();
+
+            targetDamagable = currentTarget.GetComponent<HealthBehaviour>();
+            InCombat = true;
+            
+            MakeAttack();
+        }
+    }
+    
+    private bool TargetIsInRange()
+        => TargetIsInRange(currentTarget.transform); // TODO: переделать ренжу со сферы на обычное расстояние и рисовать гизмо
+    
+    private bool TargetIsInRange(Transform target)
+        => Vector3.Distance(target.position, transform.position) <= _attackRange;
 
     public override void Attack(GameObject target)
     {
         currentTarget = target;
+        if(!target)
+            return;
 
-        if (TargetInRadius())
+        if (TargetIsInRange())
         {
             targetDamagable = currentTarget.GetComponent<HealthBehaviour>();
             InCombat = true;
             MakeAttack();
         }
+        
         else
         {
-            movement.Chase(target);
+            _encounteredTarget = false;
+            _movement.Chase(target);
         }
     }
-
-    private bool TargetInRadius()
-        => (currentTarget.transform.position - transform.position).magnitude <= GetComponent<SphereCollider>().radius ? true : false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        SetBaseStats();
-    }
-
-    protected override void SetBaseStats()
-    {
-        movement = GetComponent<MovementBehaviour>();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject == currentTarget)
-        {
-            movement.StopMovement();
-            
-            targetDamagable = currentTarget.GetComponent<HealthBehaviour>();
-            InCombat = true;
-
-            MakeAttack();
-        }
-    }
-
+    
     public override void MakeAttack()
     {
-        if (currentTarget == null || targetDamagable == null || !currentTarget.activeInHierarchy)
+        if (ReferenceEquals(null, currentTarget) || ReferenceEquals(null, targetDamagable) || !currentTarget.activeInHierarchy)
         {
             InCombat = false;
             GetNextTarget();
+            _encounteredTarget = false;
         }
 
         else
         {
-            SpawnArrow();
+            if (TargetIsInRange())
+            {
+                SpawnArrow();
+                _shootTimer.StartTimer(originalAttack.AttackDuration, MakeAttack);
+            }
+
+            else
+                GetNextTarget();
         }
     }
-
+    
     private void SpawnArrow()
     {
         Vector3 predictedPosition = AIShoot.AimAtTarget(arrowPoint.gameObject, currentTarget, (arrowPoint.forward * arrowForce).magnitude);
@@ -93,15 +133,11 @@ public class HoodArcherBehaviour : AttackBehaviour
         arrowClone.GetComponent<Arrow>().Init(originalAttack.damage);
         arrowClone.GetComponent<Rigidbody>().velocity = arrowPoint.forward * arrowForce;
     }
-
-    protected override void GetNextTarget()
+    
+    protected override void GetNextTarget() => Attack(targetDistributor.GetTargetFor(gameObject));
+    
+    protected override void SetBaseStats()
     {
-        Attack(targetDistributor.GetTargetFor(gameObject));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        throw new NotImplementedException();
     }
 }
